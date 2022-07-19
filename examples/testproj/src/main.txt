@@ -1,0 +1,117 @@
+/*
+import { SomeSuperClass } -> "some/dependency/module";
+*/
+// A constant; variables can't be defined at module level
+SomeConst: boolean = true and true;
+
+// Enumeration requires a base primitive type
+final SomeEnum: i32 {
+    A,
+    B,
+    C,
+    D,
+    E = B | C
+}
+
+
+// Function signature
+SomeSignature: (i32, i32) i32;
+
+
+// Interface
+SomeInterface: {
+    prop1: i32 { get; }
+    method1(i32): void;
+}
+
+max(x: i32, y: i32): i32 {
+    if (x > y) {
+        return x;
+    } else {
+        return y;
+    }
+}
+
+main(): i32 {
+    n: i32 = 0;
+
+    n++;
+
+    repeat (n) {
+        n++;
+        print 'hello! ';
+    }
+    print n;
+    return 0;
+}
+
+
+ClassA {
+    clsAField: i32;
+}
+
+ClassB {
+    clsBField: ClassA;
+}
+
+ClassC {
+    clsCField: ClassB;
+}
+
+ClassD {
+    clsDField: ClassC;
+}
+
+
+SomeSuperClass {
+
+    superField: i64;
+
+    method1(x: i32): i32 {
+        return 10 + x;
+    }
+
+    method1(): i32 {
+        return 20;
+    }
+
+    method1(x: i32, y: i32): i32 {
+        return y + x;
+    }
+}
+
+SomeClass -> SomeSuperClass, SomeInterface {
+
+    static Field1: i32;
+    field1: ClassD;
+    field2: i64;
+
+    /*
+    SomeClass() {
+        super();
+        field1 = 0;
+        field2 = super.method1(5);
+    }
+    */
+    prop1: i32 {
+        get {
+            return 1 + field1;
+        }
+        set {  }
+    }
+
+    method1(x: i32): i32 {
+        var1: i32 = 0;
+        return var1 + super.method1(x, 0);
+    }
+
+    // binary +
+    +(other: i32, reversed: boolean): i32 {
+        return field1.clsDField.clsCField.clsBField.clsAField + other;
+    }
+
+    // unary +
+    +(): i32 {
+        return field1.clsDField.clsCField.clsBField.clsAField + 1;
+    }
+}

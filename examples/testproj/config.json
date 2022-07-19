@@ -1,0 +1,31 @@
+{
+  "project": {
+    "name": "projectName",
+    "description": "This project solves some problem",
+    "version": "0.1.0",
+    "author": {
+      "name": "theAuthor",
+      "contact": {
+        "support": "support@email.com",
+        "website": "theauthor.com"
+      }
+    }
+  },
+  "build": {
+    "paths": {
+      "source": "src/",
+      "dependencies": "vendor/",
+      "artifacts": "out/tempfiles/",
+      "docs": "out/docs/",
+      "logs": "out/tempfiles/log/",
+      "dist": "out/dist/"
+    },
+    "presets": {
+      "default": {
+        "main": "main.txt",
+        "targets": ["bytecode"],
+        "options": []
+      }
+    }
+  }
+}
