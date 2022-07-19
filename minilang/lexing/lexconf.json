@@ -1,0 +1,132 @@
+{
+  "kinds": {
+    "whitespace": "WS",
+    "word": "WORD",
+    "keyword": "KEYWORD",
+    "number": "NUMBER",
+    "delimiter": "DELIMITER",
+    "operator": "OPERATOR",
+    "string": "STRING",
+    "comment": "COMMENT",
+    "documentation": "DOCUMENTATION",
+    "eof": "EOF"
+  },
+  "whitespace": {
+    "include": false,
+    "chars": " \n\t"
+  },
+  "tokens": {
+    "(": "LPAREN",
+    ")": "RPAREN",
+    "{": "LBRACE",
+    "}": "RBRACE",
+    "[": "LBRACKET",
+    "]": "RBRACKET",
+    ",": "COMMA",
+    ".": "DOT",
+    "=": "ASSIGN",
+    "<<": "LSHIFT",
+    ";": "SEMICOLON",
+    ":": "COLON",
+    "->": "POINTER",
+    "++": "INCR",
+    "--": "DECR",
+    "+": "ADD",
+    "-": "SUB",
+    "*": "MUL",
+    "/": "DIV",
+    "%": "MOD"
+  },
+  "delimiter": {
+    "chars": ",.;:([{}])"
+  },
+  "keyword": {
+    "subkind": "RESERVED",
+    "subkinds": ["access", "keyvalue", "qualifier", "primitive"],
+    "reserved": [
+      "import", "get", "set", "if", "elif", "else", "while", "do", "switch", "return", "break", "breakpoint",
+      "continue", "repeat", "print", "assert"
+    ],
+    "keyvalue": [
+      "null", "true", "false", "this", "super", "base", "value"
+    ],
+    "qualifier": [
+      "static", "unbound", "final", "abstract", "const", "readonly", "override", "overload"
+    ],
+    "access": [
+      "public", "protected", "private"
+    ],
+    "primitive": [
+      "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64", "f32", "f64", "boolean", "string"
+    ]
+  },
+  "word": {
+    "max_length": 128,
+    "subkind": "IDENTIFIER"
+  },
+  "string": {
+    "delimiters": "'\"`",
+    "'": {
+      "subkind": "SINGLEQUOTE"
+    },
+    "\"": {
+      "subkind": "DOUBLEQUOTE"
+    },
+    "`": {
+      "subkind": "TEMPLATE"
+    },
+    "is_multiline": false,
+    "escape": {
+      "mark": "\\"
+    }
+  },
+  "number": {
+    "subkind": "INTEGER",
+    "separator": "_",
+    "integer": {
+      "base_chars": "box",
+      "base": {
+        "b": {
+          "digits": "01",
+          "subkind": "BINARY"
+        },
+        "o": {
+          "digits": "01234567",
+          "subkind": "OCTAL"
+        },
+        "x": {
+          "digits": "0123456789abcdef",
+          "subkind": "HEX"
+        }
+      }
+    },
+    "float": {
+      "subkind": "FLOAT",
+      "scientific": false
+    }
+  },
+  "operator": {
+    "chars": "!%&*+-=/?|^~<>",
+    "max_length": 3
+  },
+  "comment": {
+    "include": false,
+    "line": "//",
+    "subkind": "LINE",
+    "block": {
+      "begin": "/*",
+      "end": "*/",
+      "subkind": "BLOCK"
+    }
+  },
+  "document": {
+    "include": false,
+    "subkind": "BRIEF",
+    "line": "///",
+    "block": {
+      "begin": "/**",
+      "end": "*/",
+      "subkind": "LONG"
+    }
+  }
+}
